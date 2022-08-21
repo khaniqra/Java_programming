@@ -1,0 +1,86 @@
+import java.util.*;
+
+
+public class Main {
+       
+    public static void main(String[] args) {
+        Map<Integer, Integer> map = new HashMap<>(); //for roll no & marks
+        Map<Integer, String> map1 = new HashMap<>(); //for roll no & name
+        Scanner s = new Scanner(System.in);
+        int y;
+        int a,b;
+        String c;
+           
+        System.out.println("Enter no of students:");
+        int n =s.nextInt();
+        System.out.println("Enter roll no, name & marks:\n");
+        
+        for(int i=0;i<n;i++){
+            a = s.nextInt();
+            c = s.nextLine();
+            b = s.nextInt();
+            map.put(a,b);
+            map1.put(a,c);
+        }
+        
+        System.out.println("Select option\n1.Display\n2.Update\n3.Highest");
+        int x =s.nextInt();
+       // map.put(10,45);
+       //set has one index one value but map has 2 entries(key-value) therefore we convert it to one value
+        do{
+        switch(x){
+            case 1:{
+                Set set = map.entrySet(); //get set of entries
+                Set set1 = map1.entrySet();
+                
+                Iterator i=set.iterator(); //get an iterator
+                Iterator j=set1.iterator();
+                System.out.println("Name : Roll no : Marks");
+                while(i.hasNext() && j.hasNext()){
+                    Map.Entry m = (Map.Entry)i.next(); //type casting
+                    Map.Entry m1 = (Map.Entry)j.next();
+                        System.out.println(m1.getValue()+":"+m.getKey()+" : "+m.getValue());   
+                }
+            }
+            break;
+             
+            case 2:{
+                System.out.println("Enter your roll no:");
+                int r =s.nextInt();
+                int marks = (Integer)map.get(r); //marks to be updated
+                String d = map1.get(r);
+                // Set set = map.entrySet();
+                 System.out.println("Enter new marks:");
+                 int new_marks = s.nextInt();
+                 map.put(r,new_marks);
+                 System.out.println("Updation\n Roll no:"+ r+"Name:"+d+"\nold marks:"+marks+"new marks:"+new_marks); 
+            }
+            case 3:{
+                Set set = map.entrySet(); //get set of entries
+                Set set1 = map1.entrySet();
+                
+                Iterator i=set.iterator(); //get an iterator
+                Iterator j=set1.iterator();
+                System.out.println("Name : Roll no : Highest Marks");
+                int max =0;
+                 Map.Entry m = null;//type casting
+                  Map.Entry m1 = null;
+                while(i.hasNext() && j.hasNext()){
+                     m = (Map.Entry)i.next(); //type casting
+                     m1 = (Map.Entry)j.next();
+                  if(max < (Integer)m.getValue()){
+                      max = (Integer)m.getValue();
+                  }  
+                }
+                  System.out.println(m1.getValue()+":"+m.getKey()+" : "+max); 
+            }
+                
+        }
+        System.out.println("Do you want to continue?(0/1):");
+         y =s.nextInt();
+       }while(y!=0);
+        
+ 
+    }
+    
+}
