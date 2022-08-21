@@ -1,0 +1,26 @@
+
+import java.util.*;
+
+public class Main {
+
+  public static void main(String[] args) {
+    Scanner s = new Scanner(System.in);
+    Stack st = new Stack();
+    int n = s.nextInt(); // no of elements to be inserted
+    for (int i = 0; i < n; i++) {
+      int b = s.nextInt();
+      st.push(b);
+    }
+    System.out.println("Capacity of stack:" + st.capacity()); // gives max elements to be stored
+    System.out.println("Size of stack:" + st.size()); // gives no of elements at present
+    System.out.println("Top of the stack is:" + st.peek());
+    try {
+      System.out.println("The element removed:" + st.pop());
+      System.out.println("The element removed:" + st.pop());
+      System.out.println("The element removed:" + st.pop());
+      System.out.println("The element removed:" + st.pop());
+    } catch (EmptyStackException e) {
+      System.out.println("Stack is empty");
+    }
+  }
+}
